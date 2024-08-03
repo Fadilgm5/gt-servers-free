@@ -1,0 +1,24 @@
+name: Jalankan GTPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  jalankan-gtps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository GTPS
+        uses: actions/checkout@v2
+        with:
+          repository: 'username/gtps'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Masuk ke direktori GTPS
+        run: |
+          cd gtps
+
+      - name: Jalankan perintah untuk memulai GTPS
+        run: |
+          ./start.sh
